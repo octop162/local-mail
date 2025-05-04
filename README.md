@@ -3,6 +3,12 @@
 
 ## 全体像
 以下のような構成にしてみる。
+
+これらができれば成功とする。
+- otaru.testからメール送信する
+- asahikawa.testを中継してhakodate.testで受信する
+- hakodate.testからotaru.testへ返信する
+
 ![](docs/mail-local.drawio.svg)
 
 ### ネットワーク情報
