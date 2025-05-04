@@ -1,15 +1,17 @@
 ## 概要
 勉強用にメール環境をつくりたかったので基本構成で作成してたい。
+ネイティブのLinux上で動かしており、WSL上ではうまくいかないことを確認している。
 
 ## 全体像
 以下のような構成にしてみる。
 
-これらができれば成功とする。
+![](docs/mail-local.drawio.svg)
+
+最終的にはこれをしたい。
+
 - otaru.testからメール送信する
 - asahikawa.testを中継してhakodate.testで受信する
 - hakodate.testからotaru.testへ返信する
-
-![](docs/mail-local.drawio.svg)
 
 ## ネットワーク情報
 

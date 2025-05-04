@@ -5,7 +5,8 @@ set -e
 chown -R bind:bind /etc/bind /var/cache/bind /var/lib/bind 2>/dev/null || true
 
 # デフォルトルート
-ip route del default
+# internal: true でなければ不要
+# ip route del default
 ip route add default via 192.168.100.200
 
 # フォアグラウンドでnamedを実行

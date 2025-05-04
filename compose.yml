@@ -9,6 +9,7 @@ services:
       - ./r0:/etc/frr
     networks:
       sapporo:
+        ipv4_address: 192.168.100.200
       r0-r1:
         ipv4_address: 172.16.101.1
       r0-r2:
@@ -162,6 +163,7 @@ services:
 networks:
   sapporo:
     driver: bridge
+    internal: true
     ipam:
       config:
         - subnet: 192.168.100.0/24
