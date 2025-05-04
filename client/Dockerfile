@@ -6,4 +6,6 @@ RUN apt update && \
         traceroute \
         iputils-ping \
         net-tools \
-        curl 
+        dnsutils \
+        curl \
+        vim

@@ -1,0 +1,5 @@
+zone "sapporo.test" {
+    type master;
+    file "/etc/bind/db.sapporo.test";
+    allow-update { none; };
+};
