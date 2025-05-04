@@ -1,0 +1,13 @@
+# 基本設定
+myhostname = smtp.otaru.test
+mydomain = otaru.test
+myorigin = $mydomain
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+mynetworks = 127.0.0.0/8, 192.168.100.0/24, 192.168.101.0/24, 192.168.102.0/24, 192.168.103.0/24
+
+# メール受信設定
+inet_interfaces = all
+inet_protocols = all
+
+# メールボックス設定
+home_mailbox = Maildir/
