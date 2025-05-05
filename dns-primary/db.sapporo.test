@@ -7,7 +7,7 @@ $TTL    86400
                          86400 )        ; Negative Cache TTL
 ;
 @       IN      NS      ns.sapporo.test.
-ns      IN      A       192.168.100.100 ; NameServer
+ns      IN      A       192.168.100.100
 
-; 追加するAレコード
+; WEB SERVER
 www     IN      A       192.168.100.102

@@ -34,7 +34,6 @@
 | R2             | sapporo.test-asahikawa.test | 192.168.102.200<br>172.16.102.200                               |                       |
 | R3             | sapporo.test-hakodate.test  | 192.168.103.200<br>172.16.103.200                               |                       |
 | DNS(primary)   | sapporo.test                | 192.168.100.100                                                 |                       |
-| DNS(secondary) | sapporo.test                | 192.168.100.101                                                 |                       |
 | WEB            | sapporo.test                | 192.168.100.102                                                 | DNS、疎通周りテスト用 |
 | Client         | otaru.test                  | 192.168.101.1                                                   |                       |
 | SMTP           | otaru.test                  | 192.168.101.30                                                  |                       |

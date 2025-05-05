@@ -1,0 +1,17 @@
+$TTL 86400
+@       IN      SOA     smtp.hakodate.test. admin.hakodate.test. (
+                        2025050501      ; Serial
+                        3600            ; Refresh
+                        1800            ; Retry
+                        604800          ; Expire
+                        86400 )         ; Minimum TTL
+@       IN      NS      ns.hakodate.test.
+ns      IN      A       192.168.100.100
+
+; SMTP
+@       IN      A       192.168.103.30
+smtp    IN      A       192.168.103.30
+imap    IN      A       192.168.103.31
+
+; MX
+@       IN      MX      10      smtp.hakodate.test.

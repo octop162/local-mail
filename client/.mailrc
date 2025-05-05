@@ -1,0 +1,21 @@
+account taruo {
+    set MAILSERVER=imaps://imap.otaru.test:993
+    set folder=imaps://imap.otaru.test:993
+    set smtp-use-starttls
+    set ssl-verify=ignore
+    set from="taruo@otaru.test"
+    set smtp=smtp://smtp.otaru.test:587
+    set user=taruo
+    set pass-your_account=password
+}
+
+account ika {
+    set MAILSERVER=imaps://imap.hakodate.test:993
+    set folder=imaps://imap.hakodate.test:993
+    set smtp-use-starttls
+    set ssl-verify=ignore
+    set from="ika@hakodate.test"
+    set smtp=smtp://smtp.hakodate.test:587
+    set user=ika
+    set pass-your_account=password
+}

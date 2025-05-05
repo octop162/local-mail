@@ -3,3 +3,39 @@ zone "sapporo.test" {
     file "/etc/bind/db.sapporo.test";
     allow-update { none; };
 };
+
+zone "otaru.test" {
+    type master;
+    file "/etc/bind/db.otaru.test";
+    allow-transfer { none; };
+};
+
+zone "asahikawa.test" {
+    type master;
+    file "/etc/bind/db.asahikawa.test";
+    allow-transfer { none; };
+};
+
+zone "hakodate.test" {
+    type master;
+    file "/etc/bind/db.hakodate.test";
+    allow-transfer { none; };
+};
+
+zone "101.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/db.192.168.101";
+    allow-transfer { none; };
+};
+
+zone "102.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/db.192.168.102";
+    allow-transfer { none; };
+};
+
+zone "103.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/db.192.168.103";
+    allow-transfer { none; };
+};

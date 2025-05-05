@@ -8,4 +8,7 @@ RUN apt update && \
         net-tools \
         dnsutils \
         curl \
-        vim
+        vim \
+        s-nail
+
+COPY .mailrc /root
