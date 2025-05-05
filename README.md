@@ -103,6 +103,37 @@ s-nail --account taruo
 - SMTPサーバとIMAPサーバをLMTPで接続しているが暗号化や認証を全くしていない
 - SPF/DKIM/DMARC対応していない
 
+## 詰まったポイント
+docker-compose側でIPアドレスを指定するとインターフェースは選べないのでFFR側のIPアドレスと重複してしまう。
+→FFR側ではIPアドレスの設定はしない。
+
+docker-compose側でnetworkを設定すると各コンテナのデフォルトルートゲートウェイを自動設定されてしまう。
+→internalにすることでデフォルトゲートウェイを設定しないようにした（インターネットに接続できない）
+
+今回IMAP（というかメールボックス？）はLinuxユーザーで管理したが、SMTP側はメールアドレスの管理なので
+メール受信時ににIMAP側にメールアドレスでメールを格納しようとして、そんなユーザー存在しないのでエラーになってしまった。
+このような場合はvirtual_mailbox_mapsでマッピングをする必要がある。
+
+dovecotとpostfixを分ける場合は、postfix側ではvirtual_mailbox_mapsのみ設定する。
+mydestinationは設定しない
+
+virtual_mailboxだけだとpostfix側ではメールアドレスが存在することを確認するだけで、
+IMAP側にはそのままメールアドレスで格納しようとしてしまう。
+そのため、dovecot側で以下のようにメールアドレスのドメイン部分を無視する設定をいれる。
+
+```
+auth_username_format = %n
+```
+
+docker-composeでdnsの設定ができるが、postfixでは別ファイルでDNS設定を管理していた。
+そのため、起動時にresolv.confをコピーした。
+Dockerfileでビルド時にコピーしても起動タイミングでdocker composeによって/etc/resolv.confを編集されるので起動時でないとだめ。
+
+```
+cp /etc/resolv.conf /var/spool/postfix/etc/resolv.conf
+```
+
+
 ## メモ
 これをやる必要がある？多分ない。
 
