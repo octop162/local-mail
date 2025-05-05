@@ -6,6 +6,7 @@ RUN apt update && \
     dovecot-imapd \
     dovecot-pop3d \
     dovecot-lmtpd \
+    openssl \
     supervisor 
 
 RUN groupadd -g 5000 vmail && \
@@ -29,6 +30,7 @@ COPY dovecot.conf /etc/dovecot/dovecot.conf
 COPY 10-auth.conf /etc/dovecot/conf.d
 COPY 10-mail.conf /etc/dovecot/conf.d
 COPY 10-ssl.conf /etc/dovecot/conf.d
+COPY 10-master.conf /etc/dovecot/conf.d
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 110 143 993 995

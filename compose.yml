@@ -85,7 +85,7 @@ services:
     dns:
       - 192.168.100.100
     dns_search:
-      - test
+      - otaru.test
 
   smtp-hakodate:
     build:
@@ -98,7 +98,7 @@ services:
     dns:
       - 192.168.100.100
     dns_search:
-      - test
+      - hakodate.test
 
   ##############################
   # IMAP

@@ -7,8 +7,10 @@ RUN apt update && \
         iputils-ping \
         net-tools \
         dnsutils \
+        telnet \
         curl \
         vim \
-        s-nail
+        s-nail \
+        sendmail
 
 COPY .mailrc /root

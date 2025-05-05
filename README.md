@@ -2,6 +2,9 @@
 勉強用にメール環境をつくりたかったので基本構成で作成してたい。
 ネイティブのLinux上で動かしており、WSL上ではうまくいかないことを確認している。
 
+- Ubuntu 24.04.2 LTS
+- Docker 28.1.1
+
 ## 全体像
 以下のような構成にしてみる。
 
@@ -12,6 +15,11 @@
 - otaru.testからメール送信する
 - asahikawa.testを中継してhakodate.testで受信する
 - hakodate.testからotaru.testへ返信する
+
+メールアドレスは以下で設定した。
+
+- taruo@otaru.test
+- ika@hakodate.test
 
 ## ネットワーク情報
 
@@ -70,8 +78,31 @@ docker compose exec client-otaru
 curl www.sapporo.test
 ```
 
+メール送信
 
-### メモ
+```bash
+docker compose exec client-otaru
+echo "hello taruo" | s-nail --account taruo -s "hello me" taruo@otaru.test 
+```
+
+```bash
+docker compose exec client-otaru
+echo "hello ika" | s-nail --account taruo -s "hello ika" ika@hakodate.test -A taruo
+```
+
+メール受信
+
+```bash
+docker compose exec client-otaru
+s-nail --account taruo
+```
+
+
+## 現状の問題
+- SMTPサーバとIMAPサーバをLMTPで接続しているが暗号化や認証を全くしていない
+- SPF/DKIM/DMARC対応していない
+
+## メモ
 これをやる必要がある？多分ない。
 
 ```bash

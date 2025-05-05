@@ -5,9 +5,32 @@ myorigin = $mydomain
 mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 mynetworks = 127.0.0.0/8, 192.168.100.0/24, 192.168.101.0/24, 192.168.102.0/24, 192.168.103.0/24
 
+# SASL
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+broken_sasl_auth_clients = yes
+
+smtpd_sasl_type = cyrus
+smtpd_sasl_path = smtpd
+smtp_sasl_mechanism_filter = plain, login
+smtpd_sasl_password_maps = hash:/etc/postfix/sasl/passwd
+smtpd_recipient_restrictions = 
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination
+
+# TLS
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = yes
+smtpd_tls_cert_file = /etc/ssl/certs/postfix.pem
+smtpd_tls_key_file = /etc/ssl/private/postfix.key
+smtp_tls_security_level = may
+smtp_tls_loglevel = 1
+
 # メール受信設定
 inet_interfaces = all
 inet_protocols = all
 
 # メールボックス設定
-home_mailbox = Maildir/
+mailbox_transport = lmtp:imap.hakodate.test:24
