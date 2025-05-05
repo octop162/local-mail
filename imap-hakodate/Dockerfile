@@ -16,13 +16,13 @@ RUN apt update && \
 RUN groupadd -g 5000 vmail && \
     useradd -g vmail -u 5000 vmail -d /var/mail/vhosts -m -s /usr/sbin/nologin
 
-RUN useradd -m taruo \
- && echo "taruo:password" | chpasswd \
- && mkdir -p /home/taruo/Maildir \
- && chown -R taruo:taruo /home/taruo/Maildir
+RUN useradd -m ika \
+ && echo "ika:password" | chpasswd \
+ && mkdir -p /home/ika/Maildir \
+ && chown -R ika /home/ika/Maildir
 
 RUN mkdir -p \
-    /var/mail/vhosts/otaru.test/user \
+    /var/mail/vhosts/hakodate.test/user \
     && chown -R vmail:vmail /var/mail/vhosts
 
 COPY dovecot.conf /etc/dovecot/dovecot.conf

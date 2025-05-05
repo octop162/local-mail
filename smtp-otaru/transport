@@ -1,1 +1,1 @@
-otaru.test    smtp:imap.otaru.test:25
+otaru.test    lmtp:imap.otaru.test:24

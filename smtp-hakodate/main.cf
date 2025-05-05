@@ -2,8 +2,7 @@
 myhostname = smtp.hakodate.test
 mydomain = hakodate.test
 myorigin = $mydomain
-mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-mynetworks = 127.0.0.0/8, 192.168.100.0/24, 192.168.101.0/24, 192.168.102.0/24, 192.168.103.0/24
+mynetworks = 127.0.0.0/8, 192.168.100.0/24, 192.168.101.0/24, 192.168.102.0/24, 192.168.103.0/24, 172.16.101.0/24, 172.16.102.0/24, 172.16.103.0/24
 
 # SASL
 smtpd_sasl_auth_enable = yes
@@ -21,12 +20,16 @@ smtpd_recipient_restrictions =
     reject_unauth_destination
 
 # TLS
+smtp_tls_loglevel = 1
+smtpd_use_tls=yes
 smtpd_tls_security_level = may
-smtpd_tls_auth_only = yes
+smtpd_tls_auth_only = no
 smtpd_tls_cert_file = /etc/ssl/certs/postfix.pem
 smtpd_tls_key_file = /etc/ssl/private/postfix.key
-smtp_tls_security_level = may
-smtp_tls_loglevel = 1
+smtpd_tls_protocols = !SSLv2, !SSLv3
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtp_tls_protocols = !SSLv2, !SSLv3
+smtp_tls_mandatory_protocols = !SSLv2, !SSLv3
 
 # メール受信設定
 inet_interfaces = all
@@ -34,3 +37,10 @@ inet_protocols = all
 
 # メールボックス設定
 mailbox_transport = lmtp:imap.hakodate.test:24
+transport_maps = hash:/etc/postfix/transport
+virtual_mailbox_domains = hakodate.test
+virtual_mailbox_maps = hash:/etc/postfix/virtual_mailbox
+
+# ログ設定
+maillog_file = /var/log/postfix.log 
+

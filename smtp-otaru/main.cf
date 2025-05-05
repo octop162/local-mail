@@ -2,7 +2,6 @@
 myhostname = smtp.otaru.test
 mydomain = otaru.test
 myorigin = $mydomain
-mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 mynetworks = 127.0.0.0/8, 192.168.100.0/24, 192.168.101.0/24, 192.168.102.0/24, 192.168.103.0/24, 172.16.101.0/24, 172.16.102.0/24, 172.16.103.0/24
 
 # SASL
@@ -39,4 +38,9 @@ inet_protocols = all
 # メールボックス設定
 mailbox_transport = lmtp:imap.otaru.test:24
 transport_maps = hash:/etc/postfix/transport
-relay_domains = otaru.test
+virtual_mailbox_domains = otaru.test
+virtual_mailbox_maps = hash:/etc/postfix/virtual_mailbox
+
+# ログ設定
+maillog_file = /var/log/postfix.log 
+

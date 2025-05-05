@@ -1,5 +1,7 @@
 set v15-compat
 set emptystart
+set ssl-verify=ignore
+set ssl-verify-certificates=no
 
 account taruo {
     # 基本
@@ -10,11 +12,10 @@ account taruo {
     set folder=imaps://imap.otaru.test:993
     set inbox=imaps://imap.otaru.test:993/INBOX
     set user=taruo
+    set password=password
     set imap-auth=login
 
     # SMTP
-    # set ssl-verify=ignore
-    # set ssl-verify-certificates=no
     # set smtp-use-starttls
     # set tls-version=TLSv1.2
     set mta=smtp://taruo:password@smtp.otaru.test:25

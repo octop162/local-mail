@@ -3,7 +3,6 @@ FROM debian:stable
 # 設定ファイルをコピー（先にコピーしておかないとインストールに失敗した）
 COPY main.cf /etc/postfix/
 COPY master.cf /etc/postfix/
-COPY transport /etc/postfix
 COPY 10-postfix.conf /etc/rsyslog.d
 
 RUN apt-get update \
@@ -11,7 +10,13 @@ RUN apt-get update \
 postfix \
 libsasl2-modules \
 sasl2-bin \
-openssl
+openssl \
+telnet \
+iproute2 \
+traceroute \
+iputils-ping \
+net-tools \
+dnsutils
 
 # SSL証明書の生成
 RUN mkdir -p /etc/ssl/private && \
@@ -27,7 +32,12 @@ chmod 600 /etc/postfix/sasl/passwd && \
 postmap hash:/etc/postfix/sasl/passwd
 
 # IMAP
+COPY transport /etc/postfix
 RUN postmap /etc/postfix/transport
+
+# VirtualMailbox
+COPY virtual_mailbox /etc/postfix
+RUN postmap /etc/postfix/virtual_mailbox
 
 # エントリポイントスクリプト
 COPY entrypoint.sh /

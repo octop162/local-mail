@@ -106,20 +106,35 @@ services:
   imap-otaru:
     build:
       context: ./imap-otaru
+    cap_add:
+      - NET_ADMIN
     networks:
       otaru:
         ipv4_address: 192.168.101.31
     dns:
       - 192.168.100.100
     dns_search:
-      - test
+      - otaru.test
+
+  imap-hakodate:
+    build:
+      context: ./imap-hakodate
+    cap_add:
+      - NET_ADMIN
+    networks:
+      hakodate:
+        ipv4_address: 192.168.103.31
+    dns:
+      - 192.168.100.100
+    dns_search:
+      - hakodate.test
 
   ##############################
   # テスト用クライアント
   ##############################
   client-otaru:
     build:
-      context: ./client
+      context: ./client-otaru
     cap_add:
       - NET_ADMIN
     networks:
@@ -133,7 +148,7 @@ services:
     
   client-hakodate:
     build:
-      context: ./client
+      context: ./client-hakodate
     cap_add:
       - NET_ADMIN
     networks:

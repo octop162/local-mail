@@ -1,0 +1,23 @@
+set v15-compat
+set emptystart
+set ssl-verify=ignore
+set ssl-verify-certificates=no
+
+account ika {
+    # 基本
+    set from="ika@hakodate.test"
+
+    # IMAP
+    set MAILSERVER=imaps://imap.hakodate.test:993
+    set folder=imaps://imap.hakodate.test:993
+    set inbox=imaps://imap.hakodate.test:993/INBOX
+    set user=ika
+    set password=password
+    set imap-auth=login
+
+    # SMTP
+    # set smtp-use-starttls
+    # set tls-version=TLSv1.2
+    set mta=smtp://ika:password@smtp.hakodate.test:25
+    set smtp-auth=none
+}

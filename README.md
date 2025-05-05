@@ -87,7 +87,7 @@ echo "hello taruo" | s-nail --account taruo -s "hello me" taruo@otaru.test
 
 ```bash
 docker compose exec client-otaru
-echo "hello ika" | s-nail --account taruo -s "hello ika" ika@hakodate.test -A taruo
+echo "hello ika" | s-nail --account taruo -s "hello ika" ika@hakodate.test
 ```
 
 メール受信
@@ -99,6 +99,7 @@ s-nail --account taruo
 
 
 ## 現状の問題
+- 25番ポートで送信している
 - SMTPサーバとIMAPサーバをLMTPで接続しているが暗号化や認証を全くしていない
 - SPF/DKIM/DMARC対応していない
 
