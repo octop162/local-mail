@@ -10,11 +10,6 @@
 
 ![](docs/mail-local.drawio.svg)
 
-最終的にはこれをしたい。
-
-- otaru.testからメール送信する
-- asahikawa.testを中継してhakodate.testで受信する
-- hakodate.testからotaru.testへ返信する
 
 メールアドレスは以下で設定した。
 
@@ -27,7 +22,7 @@
 | :------------- | :--------------- | :------ |
 | sapporo.test   | 192.168.100.0/24 | DNSサーバ用 |
 | otaru.test     | 192.168.101.0/24 | メール送信側  |
-| asahikawa.test | 192.168.102.0/24 | メール中継   |
+| asahikawa.test | 192.168.102.0/24 |         |
 | hakodate.test  | 192.168.103.0/24 | メール受信側  |
 | R0-R1          | 172.16.101.0/24  |         |
 | R0-R2          | 172.16.102.0/24  |         |
@@ -46,7 +41,6 @@
 | Client         | otaru.test                  | 192.168.101.1                                                   |                       |
 | SMTP           | otaru.test                  | 192.168.101.30                                                  |                       |
 | IMAP           | otaru.test                  | 192.168.101.31                                                  |                       |
-| SMTP           | asahikawa.test              | 192.168.102.30                                                  |                       |
 | Client         | hakodate.test               | 192.168.103.1                                                   |                       |
 | SMTP           | hakodate.test               | 192.168.103.30                                                  |                       |
 | IMAP           | hakodate.test               | 192.168.103.31                                                  |                       |
